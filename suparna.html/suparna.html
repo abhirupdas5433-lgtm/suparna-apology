@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Suparna ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+text-align:center;
+color:#333;
+}
+
+.container{
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.25);
+max-width:650px;
+position:relative;
+}
+
+img{
+width:100%;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+h1{
+color:#ff2e63;
+font-size:36px;
+}
+
+p{
+font-size:18px;
+line-height:1.6;
+}
+
+button{
+border:none;
+padding:14px 28px;
+border-radius:25px;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+}
+
+.yes{
+background:#ff2e63;
+color:white;
+}
+
+.no{
+background:#444;
+color:white;
+position:relative;
+}
+
+.hidden{
+display:none;
+}
+
+.heart{
+font-size:50px;
+animation:beat 1s infinite;
+}
+
+@keyframes beat{
+0%{transform:scale(1);}
+50%{transform:scale(1.2);}
+100%{transform:scale(1);}
+}
+
+/* floating hearts */
+
+.heartbg{
+position:absolute;
+color:white;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<img src="photo.jpg">
+
+<h1>I'm Sorry Suparna ❤️</h1>
+
+<p id="typing"></p>
+
+<h2>Will you forgive me?</h2>
+
+<button class="yes" onclick="forgive()">Yes ❤️</button>
+<button class="no" id="noButton">No</button>
+
+<div id="finalMessage" class="hidden">
+
+<h2>Thank you my love ❤️</h2>
+
+<p>
+You just made me the happiest person alive.  
+I promise to take better care of your heart.
+</p>
+
+<div class="heart">❤️</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* typing love letter */
+
+const text="Suparna... I know I made a mistake and I'm truly sorry. Hurting you was never my intention. You mean everything to me. Sorry my darling, I can't live without you.";
+let i=0;
+
+function typeWriter(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeWriter,40);
+}
+}
+
+typeWriter();
+
+/* forgive button */
+
+function forgive(){
+document.getElementById("finalMessage").classList.remove("hidden");
+}
+
+/* running NO button */
+
+const noButton=document.getElementById("noButton");
+
+noButton.addEventListener("mouseover",function(){
+const x=Math.random()*300-150;
+const y=Math.random()*200-100;
+noButton.style.transform=`translate(${x}px,${y}px)`;
+});
+
+/* falling hearts */
+
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heartbg");
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
